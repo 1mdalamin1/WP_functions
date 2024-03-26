@@ -1,6 +1,10 @@
 <?php  
 // for ubuntu os wordpress localhost asking for ftp
 // define('FS_METHOD', 'direct');
+// upload squl file in database from terminal
+# mysql -u root -p lb_dev < database file-path/squl.sql
+
+
 
 // remove updated widgets style
 function example_theme_support() {
@@ -649,7 +653,6 @@ wodgc_tab_img_upload('.wodgc-tab-img-upload-btn');
 function isEmail(email) {
     let regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email);
-
 }
 
 // email and phone number validation
@@ -688,8 +691,6 @@ function userLoginFormSubmit() {
         
     }
 
-    
-
     if(!user_phone){
         jQuery('input[name=user_phone]').css('border','1px solid red');
         jQuery('input[name=user_phone]').focus();
@@ -710,8 +711,6 @@ function userLoginFormSubmit() {
     }
 
    
-
-
     if(isValid){
         // ajax call 
     }

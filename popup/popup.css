@@ -128,7 +128,8 @@
   }
   /*popup css The end*/
 
-  .gift_loding{
+  
+  .gift_loding{  /* &#10044; */
     animation: rotetSpin 3s linear infinite;
     display: inline-block;
     font-size: 18px;

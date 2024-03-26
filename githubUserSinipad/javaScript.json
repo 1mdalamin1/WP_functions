@@ -52,5 +52,106 @@
 		  "}"
 		],
 		"description": "ajax call with formSubmit function"
+	},
+	"Print to ajaxCall": {
+		"prefix": "ajaxCall",
+		"body": [
+			
+			"jQuery.ajax({",
+			"  type: 'POST',",
+			"  dataType: 'json',",
+			"  url: '<?php echo admin_url('admin-ajax.php')?>',",
+			"  data: {",
+			"    action: 'get_data',",
+			"    email: user_email,",
+			"    name: user_phone",
+			"  },",
+			"  success: function(response) { if ( ! response || response.error ) return;",
+				"jQuery('#sms').html(` `);",
+				" if (response.status == 'ok') { jQuery('#sms').html(`DOLARS{response.message}`);",
+				"} else { ",
+				" jQuery('#sms').html(`<p class='error'>Some problam</p>`);",
+				"}",
+				" $1 ",
+			"   }",
+			"});"
+		],
+		"description": "only ajax call function"
+	},
+	"Print to validFrom": {
+		"prefix": "validFrom",
+		"body": [
+		"// Form submit function onclick='formSubmit()'",
+		"function formSubmit() {",
+		  "let user_phone = jQuery('input[name=user_phone]').val().trim();",
+		  "let user_email=jQuery('input[name=user_email]').val().trim();",
+			" ",
+			"jQuery('.error').remove(); // Reset any previous error messages",
+			" ",
+			"// validation ;",
+			"let isValid = true;",
+			"if(!user_email){",
+			"  jQuery('input[name=user_email]').css('border','1px solid red');",
+			"  jQuery('input[name=user_email]').focus();",
+			"  jQuery('input[name=user_email]').after(`<p class='error'>A email number is required</p>`);",
+			"  isValid = false;",
+			"}else{",
+			"  if(!isValidEmail(user_email) && user_email){",
+			"    jQuery('input[name=user_email]').css('border','1px solid red');",
+			"    jQuery('input[name=user_email]').focus();",
+			"    jQuery('input[name=user_email]').after(`<p class='error'>Enter a valid email address</p>`);",
+			"    isValid = false;",
+			"  }else{",
+			"    jQuery('input[name=user_email]').css('border','0px solid red');",
+			"    jQuery('input[name=user_email]').after(` `);",
+			"  },",
+			"},",
+
+			" ",
+
+			"if(!user_phone){",
+			"  jQuery('input[name=user_phone]').css('border','1px solid red');",
+			"  jQuery('input[name=user_phone]').focus();",
+			"  jQuery('input[name=user_phone]').after(`<p class='error'>A phone number is required</p>`);",
+			"  isValid = false;",
+			"}else{",
+			"  if(user_phone.length!=7 && user_phone){",
+			"    jQuery('input[name=user_phone]').css('border','1px solid red');",
+			"    jQuery('input[name=user_phone]').focus();",
+			"    jQuery('input[name=user_phone]').after(`<p class='error'>Enter a valid phone number</p>`);",
+			"    isValid = false;",
+			"  }else{",
+			"    jQuery('input[name=user_phone]').css('border','0px solid red');",
+			"    jQuery('input[name=user_phone]').after(` `);",
+			"  },",
+			"},",
+			
+			
+			"//   .loding{ animation: rotetSpin 3s linear infinite; display: inline-block; font-size: 18px; line-height: 0; }",
+			"//   @keyframes rotetSpin { 0%{ transform: rotate(360deg); } 100%{ transform: rotate(0deg); } }",
+			"jQuery('#sms').html(`<b>Wait..</b> <span class='loding'>&#10044;</span>`);",
+			"// jQuery('#sms').html(`<b>Wait..</b> <span class='loding'><img src='<?php echo plugin_dir_url(__FILE__); ?>img/spin.png' alt='loading...' ></span>`);",
+			" ",
+			"if(isValid){",
+			"  // ajax call ",
+			" $1 ",
+		    "}",
+		"}"
+		],
+		"description": "Validation with formSubmit function"
+	},
+	"Print to emailValidation": {
+		"prefix": "emailValidation",
+		"body": [
+			
+			"// validation email function",
+			"function isValidEmail(email) {",
+			"  let regex = /^([a-zA-Z0-9_.+-])+BAKSlash@(([a-zA-Z0-9-])+BAKSlash.)+([a-zA-Z0-9]{2,4})+$/;",
+			"  return regex.test(email);",
+			"},",
+			" $1 "
+		],
+		"description": "only ajax call function"
 	}
+
 }
