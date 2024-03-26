@@ -717,6 +717,7 @@ function get_footer_custom_script(){
     // });
 </script>
 <script>
+    
 function show2ndTdElm(data) {
     let value = jQuery(data).val();
     let tr = jQuery(data).parent().parent().parent().parent();
@@ -1439,7 +1440,6 @@ function get_data() {
 </table>
      <?php
  }
-
 
     exit();
 }

@@ -257,6 +257,14 @@ function check_login_function() {
 	
 }
 
+// redirect page url
+add_action( 'template_redirect', 'redirect_to_other_page' );
+function redirect_to_other_page() {
+    if (is_shop()) { // is_page( 143 )
+	    wp_redirect( '"'.home_url().'"', 301 );
+    exit;
+    }
+}
 
 
 // category link by product id 
@@ -278,7 +286,25 @@ foreach ($cats as $key => $value) {
 
 	<?php
 }
+ # another way to cat link id, name
+    //   echo "Category ID: " . $category_id;
+	//   $category = get_queried_object(); // find url to id 
+	//   echo $category->term_id;
 
+  	$taxonomy = 'place';
+    $args = array(
+      'taxonomy' => $taxonomy, // Use "product_cat" for WooCommerce product categories
+      'hide_empty' => false, // Show even empty categories
+      'orderby' => 'name', // Order by category name
+      'order' => 'ASC', // Sort in ascending order
+    );
+    $categories = get_terms( $args );
+	if ( ! empty( $categories ) && ! is_wp_error( $categories ) ){
+		foreach ( $categories as $category ) {
+            // get_term($category);
+		    echo '<li><a href="'. get_term_link( $category ).'">'.$category->name.'</a></li>';
+		}
+	}
 
 // wooCommerce my-account 
 
@@ -371,7 +397,6 @@ function add_entries_data_to_my_account_orders( $order ) {
     ) );
 
 
-// translation text
 add_filter( 'gettext', 'wpdocs_translate_text', 10, 3 );
 function wpdocs_translate_text( $translated_text, $untranslated_text, $domain ) {
 
@@ -582,6 +607,50 @@ $data = array(
 // Insert the data into the custom table
 $wpdb->insert($table_name, $data);
 
+// Show single row in db Query
+  global $wpdb;
+$category_id = 564;
+$r  	 = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}place WHERE cat_id='{$category_id}'");
+$placeId = $r->place_id_name;
+
+// Show all row in db Query
+  global $wpdb;
+$place_data = $wpdb->get_results("SELECT id, cat_id, place_id_name FROM {$wpdb->prefix}place ORDER BY id DESC", ARRAY_A);
+$placeId = $place_data->place_id_name;
+
+
+// .product-price table.wdm_options_table tbody tr td:before, tr.cart-subtotal {
+//     display: none !important;
+// }
+// table.shop_table.shop_table_responsive.cart.woocommerce-cart-form__contents tbody tr:nth-last-child(1) {
+    // display: none;
+// }
+// add_action( 'template_redirect', 'redirect_url_to_other_page' );
+// function redirect_url_to_other_page() {
+//     if (is_shop()) { // is_page( 143 )
+// 	    wp_redirect( '"'.home_url().'"', 301 );
+//     exit;
+//     }
+// }
+
+
+// For replase text
+// add_filter( 'gettext', 'wpdocs_translate_text', 10, 3 );
+// function wpdocs_translate_text( $translated_text, $untranslated_text, $domain ) {
+
+// 	switch ( $translated_text ) {
+
+// 		case 'Millisamtala' :
+
+// 			$translated_text = 'Samtals';
+// 			break;
+
+// 		// case 'Coupon has been removed.' :
+
+// 		// 	$translated_text = 'Afsláttarkóðinn hefur verið fjarlægt';
+// 		// 	break;
+
+// 	}
 
 add_action('wp_footer', 'get_fetch_price_script');
 function get_fetch_price_script(){
@@ -825,3 +894,5 @@ function show_subcat_by_id($id){
 }
 
 
+//     return $translated_text;
+// }

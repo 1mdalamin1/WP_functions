@@ -53,6 +53,7 @@ add_filter('widget_text', 'do_shortcode');
 //   require_once( U_F_ACC_PATH . 'theme-shortcodes/protfolio-slid-shortcode.php' );
 
   require_once( U_F_ACC_PATH . 'theme-shortcodes/unlimited-form-shortcode.php' );
+  require_once( U_F_ACC_PATH . 'theme-shortcodes/ajax-process.php' );
 
 
 // Registering Project Slider files
@@ -69,6 +70,7 @@ function unlinited_form_files() {
     // wp_enqueue_script('Jquery', plugin_dir_url(__FILE__) . 'assets/jquery-1.12.5.js', array('jquery'), '20120206', true );
     wp_enqueue_script('Jquery', plugin_dir_url(__FILE__) . 'assets/jquery-3.6.1.min.js', array('jquery'), '20120206', true );
     wp_enqueue_script('myJavaScript', plugin_dir_url(__FILE__) . 'assets/myScript.js', array('jquery'), '20120206', true );
+    wp_enqueue_script('ajaxJavaScript', plugin_dir_url(__FILE__) . 'assets/ajaxScript.js', array('jquery'), '20120206', true );
     // wp_enqueue_script('owl-carousel', plugin_dir_url(__FILE__) . 'assets/owl.carousel.min.js', array('jquery'), '20120206', true );
     // wp_enqueue_script('custom-slider-active', plugin_dir_url(__FILE__) . 'assets/custom.js', array('jquery'), '20120206', true );
 
