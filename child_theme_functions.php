@@ -787,6 +787,25 @@ function userLoginFormSubmit() {
 
 }
 
+jQuery(document).ready(function() {
+    jQuery('.menu-item-has-children .sub-menu').hide();
+    jQuery('.menu-item-has-children').click(function() {
+        // Toggle the submenu
+        jQuery(this).children('.sub-menu').toggle();
+
+        // Toggle active class
+        jQuery(this).toggleClass('active');
+    });
+});
+
+// alternative 
+$(".Click-here").on('click', function () {
+    $(".menu-item-has-children").addClass('active');
+});
+$(".close-btn, .bg-overlay").click(function () {
+    $(".menu-item-has-children").removeClass('active');
+});
+
 </script>
 <?php 
 }
