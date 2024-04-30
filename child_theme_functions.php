@@ -724,7 +724,7 @@ function isEmail(email) {
     return regex.test(email);
 }
 
-// email and phone number validation
+// email validation in php and phone number validation
 
 function emailOk($email) {
     var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -865,6 +865,25 @@ function remove_admin_bar() {
             }
         }
     
+    }
+
+// Dashboard notice
+    if( !function_exists('atsew_wx_teachable_notice')){
+        function atsew_wx_teachable_notice() {
+            ?>
+            <div class="notice notice-error is-dismissible">
+                <p><?php esc_html_e("Please Insert Teachable API KEY","wx-teachable");?> <a href="<?php echo admin_url( 'admin.php?page=wc-settings&tab=teachable_fild' ); ?>"> <?php esc_html_e('Click Here.','wx-teachable');?></a></p>
+            </div>
+            <?php
+        }
+    }
+    
+    $woo_settings_page = admin_url( 'admin.php?page=wc-settings&tab=teachable_fild' );
+    
+    $current_page_url = admin_url(basename($_SERVER['REQUEST_URI']));
+    
+    if(!ATSEW_TEACHABLEAPIKEY && $current_page_url !== $woo_settings_page ){
+        add_action( 'admin_notices', 'atsew_wx_teachable_notice' );
     }
 
 /**
