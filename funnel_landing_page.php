@@ -998,9 +998,7 @@ function popup_order_data() {
         $api_error = $e->getMessage();  
         
     }
-
-
-
+    
     if(!empty($api_error)){
         $sms = 'Order Received Done!';
         echo json_encode(['status'=>'not-ok', 'message' => $api_error,'redirect'=>'']);
