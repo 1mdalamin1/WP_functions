@@ -2,6 +2,11 @@
 // for ubuntu os wordpress localhost asking for ftp
 // define('FS_METHOD', 'direct');
 // upload squl file in database from terminal
+
+# Press Win + R, type cmd, and press Enter.
+# cd C:\xampp\mysql\bin
+# mysql -u root -p fjallakofinn < "C:/Users/BT/Desktop/kvan/wp_p28od.sql"
+
 # mysql -u root -p lb_dev < database file-path/squl.sql
 
 
@@ -26,13 +31,7 @@ function remove_update_notifications( $value ) {
     return $value;
 }
 
-
-
-
-
-
 // add code for Text Slider now 
-
 add_action('wp_head', 'get_custom_script_init');
 function get_custom_script_init(){
 	?>
