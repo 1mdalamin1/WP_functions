@@ -933,3 +933,53 @@ function show_subcat_by_id($id){
 
 //     return $translated_text;
 // }
+
+// how can i hide meta data from orders compleated emails. i share you right process
+// Function to filter meta data in WooCommerce order emails
+function filter_email_meta($html, $item, $args) {
+    $strings = [];
+    
+    // Iterate through all formatted meta data for the item
+    foreach ( $item->get_all_formatted_meta_data() as $meta_id => $meta ) {
+        
+        // Get the meta key
+        $metaKey = $meta->display_key;
+
+        // Skip certain meta keys
+        if ( $metaKey == 'expiry_date' || $metaKey == 'pass__identity' ) {
+            continue;
+        }
+
+        // Get the meta value, with or without formatting, based on the 'autop' argument
+        $value = $args['autop'] 
+            ? wp_kses_post( $meta->display_value ) 
+            : wp_kses_post( make_clickable( trim( $meta->display_value ) ) );
+
+        // Add the formatted meta data to the strings array
+        $strings[] = $args['label_before'] . wp_kses_post( $meta->display_key ) . $args['label_after'] . $value;
+    }
+
+    // Combine all strings into HTML if there are any
+    if ( $strings ) {
+        $html = $args['before'] . implode( $args['separator'], $strings ) . $args['after'];
+    }
+
+    return $html;
+}
+
+// Add the filter to customize the display of item meta data in emails
+add_filter('woocommerce_display_item_meta', 'filter_email_meta', 10, 3);
+
+
+function tanvir_remove_test_payment_options( $available_gateways ) {
+  
+    if(!current_user_can('administrator')){
+        if ( isset( $available_gateways['other_payment'] )){
+            unset( $available_gateways['other_payment'] );
+        }
+    }
+
+    return $available_gateways;
+}
+add_filter( 'woocommerce_available_payment_gateways', 'tanvir_remove_test_payment_options' );
+

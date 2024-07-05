@@ -41,8 +41,12 @@
 			$("#popup_des").html($(this).attr("data-des"));
 			$(".popup-model-main").addClass('model-open');
 		});
-		$(".close-btn, .bg-overlay").click(function () {
-			$(".popup-model-main").removeClass('model-open');
+
+		jQuery(".Click-here").on('click', function () {
+			jQuery(".popup-model-main").addClass('model-open');
+		});
+		jQuery(".close-btn, .bg-overlay").click(function () {
+			jQuery(".popup-model-main").removeClass('model-open');
 		});
 
 /*
