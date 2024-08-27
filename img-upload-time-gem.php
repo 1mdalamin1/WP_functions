@@ -364,8 +364,6 @@ function upload_img_script(){
 <?php 
 }
 
-
-
 // AJAX process profile attached image file
 function profile_img_upload() {
     /*print_r($_POST);

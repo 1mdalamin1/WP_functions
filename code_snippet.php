@@ -131,6 +131,7 @@ function get_data() {
     echo json_encode(['status'=>'ok', 'message' => $sms ]);
     exit(); // wp_die();
 }
-
 add_action('wp_ajax_get_data', 'get_data');
 add_action('wp_ajax_nopriv_get_data', 'get_data');
+
+
