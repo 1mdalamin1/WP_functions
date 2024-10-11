@@ -169,7 +169,6 @@ function get_footer_custom_script(){
             }
 
             // call ajax
-
             let data = jQuery(".data-input-element").serialize();
             // console.log(data);
             jQuery("#message_area").html(`<p class="info">Please wait! we are processing...</p>`);
@@ -182,8 +181,6 @@ function get_footer_custom_script(){
                         alert("Something went wrong!");
                     }
                 });
-
-
         }
 
     }

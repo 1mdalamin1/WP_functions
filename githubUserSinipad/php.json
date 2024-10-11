@@ -87,6 +87,28 @@
 			"add_action('wp_ajax_nopriv_get_data', 'get_data');"
 		],
 		"description": "data ajax process & Email Send"
+	},
+	"Print to test log": {
+		"prefix": "log",
+		"body": [
+			"// test log | 1st create folder log",
+			"function test_log(DOLARSdata){",
+			"$1",
+			"DOLARSlog_filename = 'log';",
+			"if (!file_exists(DOLARSlog_filename)) {",
+
+			"// create directory/folder uploads.",
+			"mkdir(DOLARSlog_filename, 0777, true);",
+			"}",
+			"DOLARSlog_file_data = DOLARSlog_filename.'/log_' . time() . '.log';",
+			"// if you don't add `FILE_APPEND`, the file will be erased each time you add a log",
+			"file_put_contents(DOLARSlog_file_data, '=='.json_encode(DOLARSdata) . '\n', FILE_APPEND);",
+
+			"}",
+			"$2"
+
+		],
+		"description": "data test log data"
 	}
 
 	
