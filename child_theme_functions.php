@@ -5,9 +5,10 @@
 
 # Press Win + R, type cmd, and press Enter.
 # cd C:\xampp\mysql\bin
-# mysql -u root -p fjallakofinn < "C:/Users/BT/Desktop/kvan/wp_p28od.sql"
+# mysql -u root -p fjallakofinn < "C:/Users/BT/Desktop/kvan/onamica.sql"
 
 # mysql -u root -p lb_dev < database file-path/squl.sql
+# "D:\laragon\bin\mysql\mysql-8.0.30-winx64\bin\mysql.exe" -u root -p dbName < "C:/Users/BT/Desktop/kvan/afroza.sql"
 
 
 
@@ -982,4 +983,36 @@ function tanvir_remove_test_payment_options( $available_gateways ) {
     return $available_gateways;
 }
 add_filter( 'woocommerce_available_payment_gateways', 'tanvir_remove_test_payment_options' );
+
+// ============Nitro pack footer brand hide===========
+add_action('wp_footer', 'nitro_pack_footer_brand_hide_script');
+function nitro_pack_footer_brand_hide_script(){
+    ?>
+    <script>
+    // add your javaScript here
+    document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(function () {
+            
+            let templates = document.getElementsByTagName('template');
+            if (templates.length === 0) return;
+            let last = templates[templates.length - 1];
+            let id = last.id;
+
+            // console.log(id);
+            if (!id) return;
+            let el = document.getElementById(id);
+            if (el) el.style.display = 'none';
+            let next = el ? el.nextElementSibling : null;
+            if (next) next.style.display = 'none';
+            let next2 = next ? next.nextElementSibling : null;
+            if (next2) next2.style.display = 'none';
+
+        }, 100);
+    });
+		
+    </script>
+    <?php 
+}
+
+
 
