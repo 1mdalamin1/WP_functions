@@ -1,13 +1,26 @@
 <?php
 declare(strict_types=1);
 
-$recipientEmail = '01mdalamin1@gmail.com';
-$siteName = 'service24.vir-za.com';
-$fromEmail = 'no-reply@service24.vir-za.com';
-$smtpHost = 'service24.vir-za.com';
+/*
+$recipientEmail = 'info@tanvir.top';
+$siteName = 'tanvir.top';
+$fromEmail = 'info@tanvir.top';
+$smtpHost = 'mail.tanvir.top';
 $smtpPort = 465;
-$smtpUsername = 'no-reply@service24.vir-za.com';
-$smtpPassword = 'PUT_EMAIL_ACCOUNT_PASSWORD_HERE';
+$smtpUsername = 'info@tanvir.top';
+$smtpPassword = 'gjh+Y{GR{NB{gO6L';
+*/
+
+$recipientEmail = '01mdalamin1@gmail.com'; // '01mdalamin1@gmail.com';
+$siteName = 'tanvir.top';
+
+// Gmail SMTP configuration
+$fromEmail = '01mdalamin1@gmail.com';
+$smtpHost = 'smtp.gmail.com';
+$smtpPort = 465;
+$smtpUsername = '01mdalamin1@gmail.com';
+$smtpPassword = 'jcph qvdu ziqh eykt';// 'YOUR_16_CHARACTER_GOOGLE_APP_PASSWORD';
+
 
 function clean_text(string $value, int $maxLength = 255): string
 {
@@ -189,7 +202,7 @@ function render_response(bool $success, string $title, string $message, array $e
                   </ul>
                 <?php endif; ?>
                 <p class="mb-0">
-                  <a class="btn btn-primary" href="index.html#contact">
+                  <a class="btn btn-primary" href="/#contact">
                     <i class="bi bi-arrow-left"></i> Back to contact form
                   </a>
                 </p>
